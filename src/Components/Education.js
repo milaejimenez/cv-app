@@ -1,37 +1,45 @@
-import React from 'react'
+import React from 'react';
+import { Input } from 'semantic-ui-react';
 
 function Education(props) {
     const number = 2
     return (
         props.inputFields.map( (inputField, index) => (
         <div key={index}>
-            <input
+            <Input focus
+            type='date'
+            placeholder='From'
             name='from'
-            label='from'
+            label='From'
             value={inputField.from}
             onChange={ event => {props.handleChangeInput(number, index, event)} } />
            
-            <input
+            <Input focus
+            type='date'
+            placeholder='To'
             name='to'
-            label='from'
+            label='To'
             value={inputField.to}
             onChange={ event => {props.handleChangeInput(number, index, event)} } />
            
-            <input
+            <Input focus
+            placeholder='Degree'
             name='degree'
-            label='degree'
+            label='Degree'
             value={inputField.degree}
             onChange={ event => {props.handleChangeInput(number, index, event)} } />
            
-            <input
+            <Input focus 
+            placeholder='Institution'
             name='institution'
-            label='institution'
+            label='Institution'
             value={inputField.institution}
             onChange={ event => {props.handleChangeInput(number, index, event)} } />
            
-            <input
+            <Input focus
+            placeholder='Description'
             name='description'
-            label='from'
+            label='Description'
             value={inputField.description}
             onChange={ event => {props.handleChangeInput(number, index, event)} } />
 
