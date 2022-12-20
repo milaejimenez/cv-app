@@ -22,21 +22,21 @@ function Work(props) {
                 value={inputField.to}
                 onChange = { event => { props.handleChangeInput(number, index, event)}}  />
             
-                <input focus
+                <Input focus
                 placeholder='Title'
                 name='title'
                 label='Title'
                 value={inputField.title}
                 onChange = { event => { props.handleChangeInput(number, index, event)}}  />
 
-                <input focus
+                <Input focus
                 placeholder='Company'
                 name='company'
                 label='Company'
                 value={inputField.company}
                 onChange = { event => { props.handleChangeInput(number, index, event)}}  />
 
-                <input focus
+                <Input focus
                 placeholder='Description'
                 name='description'
                 label='Description'
