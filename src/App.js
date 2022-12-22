@@ -109,7 +109,7 @@ return(
         <Segment className='space-between'>
           <div>     
             <Header size='huge' as='h2'>{ inputFields[0].firstName } {inputFields[0].lastName }</Header>
-            <p>{ inputFields[0].profession }</p>
+            <p className='title'>{ inputFields[0].profession }</p>
           </div>
           <div >
             <p>  <Icon name='mail' size='small' /> { inputFields[0].email }</p>
