@@ -7,7 +7,7 @@ function Education(props) {
         <div>
             <h3 className='red'>Education</h3>
             {props.inputFields.map( (inputField, index) => (
-            <Segment padded basic key={index}>
+            <Segment padded basic key={inputField.id}>
                 <Input fluid focus
                 type='date'
                 placeholder='From'

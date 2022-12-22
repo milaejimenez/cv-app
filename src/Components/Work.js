@@ -7,7 +7,7 @@ function Work(props) {
         <div>
             <h3>Work Experience</h3>
             {props.inputFields.map( (inputField, index) => (
-                <Segment basic padded key={index}>
+                <Segment basic padded key={inputField.id}>
                     <Input fluid focus
                     placeholder='From'
                     type='date'
