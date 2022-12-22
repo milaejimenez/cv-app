@@ -2,8 +2,9 @@ import React, { useState } from 'react'
 import Personal from './Components/Personal';
 import Work from './Components/Work';
 import Education from './Components/Education';
-import './App.css';
 import { Divider, Grid, Segment, Container, Header, Icon } from 'semantic-ui-react'
+
+
 
 function App() {
     const[inputFields, setInputFields] = useState([
@@ -105,24 +106,26 @@ return(
         <input type="button" value="Save" /> 
       </Grid.Column>
       <Grid.Column>
-        <Segment>
-          <Segment.Inline basic>     
+        <Segment className='space-between'>
+          <div>     
             <Header size='huge' as='h2'>{ inputFields[0].firstName } {inputFields[0].lastName }</Header>
             <p>{ inputFields[0].profession }</p>
-          </Segment.Inline>
-          <Segment.Inline>
+          </div>
+          <div >
             <p>  <Icon name='mail' size='small' /> { inputFields[0].email }</p>
             <p>  <Icon name='phone' size='small' /> { inputFields[0].phone }</p>
             <p> <Icon name='home' size='small' /> { inputFields[0].address }</p>
-          </Segment.Inline>
+          </div>
         </Segment>
         <Divider />
         <h3>Work Experience</h3>
         { inputFields[1].map( (inputField, index) => (
           <div key={index}>
             <Segment basic padded>
-              <p>{inputField.company} | {inputField.from} - {inputField.to}</p>
-              <p>{inputField.title}</p>
+              <div className='space-between'>
+                <div>{inputField.company} </div> <div> {inputField.from} - {inputField.to} </div>
+              </div>
+              <p className='title'>{inputField.title}</p>
               <p>{inputField.description}</p>
             </Segment>
           </div>
@@ -133,8 +136,11 @@ return(
         { inputFields[2].map( (inputField, index) => (
           <div key={index}>
             <Segment basic padded>
-              <p>{inputField.institution} | {inputField.from} - {inputField.to}</p>
-              <p>{inputField.degree}</p>
+              <div className='space-between'>
+                <div>{inputField.institution} </div>
+                <div> {inputField.from} - {inputField.to}</div>
+              </div>
+              <p className='title'>{inputField.degree}</p>
               <p>{inputField.description}</p>
             </Segment>
           </div>
@@ -142,7 +148,7 @@ return(
       </Grid.Column>
     </Grid>
 
-    <Divider vertical>And</Divider>
+    <Divider vertical></Divider>
   </Container>
   </div>
 )

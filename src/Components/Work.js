@@ -1,55 +1,50 @@
 import React from 'react';
-import { Input } from 'semantic-ui-react';
+import { Input, Segment, Button } from 'semantic-ui-react';
 
 function Work(props) {
     const number = 1
     return (
-        props.inputFields.map( (inputField, index) => (
-            <div key={index}>
-                <Input focus
-                placeholder='From'
-                type='date'
-                name='from'
-                label='From'
-                value={inputField.from}
-                onChange = { event => { props.handleChangeInput(number, index, event)}} />
+        <div>
+            <h3>Work Experience</h3>
+            {props.inputFields.map( (inputField, index) => (
+                <Segment basic padded key={index}>
+                    <Input fluid focus
+                    placeholder='From'
+                    type='date'
+                    name='from'
+                    value={inputField.from}
+                    onChange = { event => { props.handleChangeInput(number, index, event)}} />
+                    
+                    <Input fluid focus
+                    placeholder='To'
+                    type='date'
+                    name='to'
+                    value={inputField.to}
+                    onChange = { event => { props.handleChangeInput(number, index, event)}}  />
                 
-                <Input focus
-                placeholder='To'
-                type='date'
-                name='to'
-                label='To'
-                value={inputField.to}
-                onChange = { event => { props.handleChangeInput(number, index, event)}}  />
-            
-                <Input focus
-                placeholder='Title'
-                name='title'
-                label='Title'
-                value={inputField.title}
-                onChange = { event => { props.handleChangeInput(number, index, event)}}  />
+                    <Input fluid focus
+                    placeholder='Title'
+                    name='title'
+                    value={inputField.title}
+                    onChange = { event => { props.handleChangeInput(number, index, event)}}  />
 
-                <Input focus
-                placeholder='Company'
-                name='company'
-                label='Company'
-                value={inputField.company}
-                onChange = { event => { props.handleChangeInput(number, index, event)}}  />
+                    <Input fluid focus
+                    placeholder='Company'
+                    name='company'
+                    value={inputField.company}
+                    onChange = { event => { props.handleChangeInput(number, index, event)}}  />
 
-                <Input focus
-                placeholder='Description'
-                name='description'
-                label='Description'
-                value={inputField.description}
-                onChange = { event => { props.handleChangeInput(number, index, event)}}  />
-            
-                <button type='button' onClick={props.handleAddFields}>+</button>
-                <button type='button' onClick={ () => { props.handleRemoveFields(number, index)} }>-</button>
-
-            </div>
-
-  
-        ))
+                    <Input fluid focus
+                    placeholder='Description'
+                    name='description'
+                    value={inputField.description}
+                    onChange = { event => { props.handleChangeInput(number, index, event)}}  />
+                
+                    <Button basic type='button' onClick={props.handleAddFields}>Add</Button>
+                    <Button basic type='button' onClick={ () => { props.handleRemoveFields(number, index)} }>Delete</Button>
+                </Segment>
+            ))}
+        </div>
         
     )
 }
