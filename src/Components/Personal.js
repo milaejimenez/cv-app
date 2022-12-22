@@ -19,6 +19,13 @@ function Personal(props) {
 	        label='Last Name'
             value={props.inputFields.lastName}
             onChange={ event => {props.handleChangeInput(index, event)} }  />
+
+            <Input focus
+            placeholder='Profession'
+	        name='profession'
+	        label='Profession'
+            value={props.inputFields.profession}
+            onChange={ event => {props.handleChangeInput(index, event)} } />
             
             <Input focus
             placeholder='Email'
