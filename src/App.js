@@ -1,8 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
+import html2canvas from 'html2canvas';
+import { jsPDF } from 'jspdf';
+
 import Personal from './Components/Personal';
 import Work from './Components/Work';
 import Education from './Components/Education';
-import { Divider, Grid, Segment, Container, Header, Icon } from 'semantic-ui-react'
+import { Divider, Grid, Segment, Container, Header, Icon, Button } from 'semantic-ui-react'
 
 
 
@@ -95,6 +98,21 @@ const handleRemoveFields = (number, index) => {
   setInputFields(values)
 }
 
+// Generate PDF on Save
+const printRef = useRef();
+const handleGeneratePdf = async () => {
+  const element = printRef.current;
+  const canvas = await html2canvas(element);
+  const data = canvas.toDataURL('image/png');
+
+  const pdf = new jsPDF("p", "mm", "a4");
+  const pdfWidth = pdf.internal.pageSize.getWidth();
+  const pdfHeight = pdf.internal.pageSize.getHeight(); 
+  const margin = 25;
+  pdf.addImage(data, 'PNG', margin, margin, pdfWidth - ( margin * 2 ), pdfHeight - (margin * 2));
+  pdf.save('cv.pdf');
+}
+
 
 
 return(
@@ -107,9 +125,10 @@ return(
         <Personal inputFields={inputFields[0]} handleChangeInput={handleChangeInput} />
         <Work inputFields={inputFields[1]} handleChangeInput={handleChangeInputArrays} handleAddFields={handleAddWorkFields} handleRemoveFields={handleRemoveFields} />
         <Education inputFields={inputFields[2]} handleChangeInput={handleChangeInputArrays}  handleAddFields={handleAddEducationFields} handleRemoveFields={handleRemoveFields} />
-        <input type="button" value="Save" /> 
+        <Button variant="contained"onClick={handleGeneratePdf}> Save </Button>
       </Grid.Column>
       <Grid.Column>
+        <div ref={printRef}>
         <Segment className='space-between'>
           <div>     
             <Header size='huge' as='h2'>{ inputFields[0].firstName } {inputFields[0].lastName }</Header>
@@ -149,6 +168,7 @@ return(
             </Segment>
           </div>
         )) }
+        </div>
       </Grid.Column>
     </Grid>
 
